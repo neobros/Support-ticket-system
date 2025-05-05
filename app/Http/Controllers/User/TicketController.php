@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Models\Ticket;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use App\Mail\TicketCreate;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use App\Services\TicketService;
 
 class TicketController extends Controller
 {
+    protected $ticketService;
+
+    public function __construct(TicketService $ticketService)
+    {
+        $this->ticketService = $ticketService;
+    }
+
     public function create()
     {
         return view('user.ticket.create');
@@ -27,11 +31,8 @@ class TicketController extends Controller
         ]);
 
         try {
-            
-            $validated['reference'] = strtoupper(Str::random(10));
-            $ticket = Ticket::create($validated);
 
-            Mail::to($ticket->email)->send(new TicketCreate($ticket));
+            $ticket = $this->ticketService->createTicket($validated);
             
             return redirect('/')->with('reference', $ticket->reference);
 
@@ -52,7 +53,7 @@ class TicketController extends Controller
             'reference' => 'required'
         ]);
 
-        $ticket = Ticket::where('reference', $request->reference)->first();
+        $ticket = $this->ticketService->findReference($request->reference);
 
         if ($ticket) {
            return view('user.ticket.view', compact('ticket'));
