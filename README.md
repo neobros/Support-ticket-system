@@ -1,59 +1,40 @@
-Support Ticket System
+# Support Ticket System
 
-This project is a Laravel-based support ticket system designed to allow customers to submit tickets and support agents to manage and respond to them.
+A Laravel-based support ticket system that allows customers to submit issues and support agents to manage and respond to them. Designed for small to medium-sized teams needing a simple, email-enabled ticketing platform.
 
-Technologies Used
+## 🛠 Technologies Used
 
-Laravel 12 – PHP web framework
+- **Laravel 12** – PHP web framework  
+- **Laravel Breeze** – Lightweight starter kit for authentication  
+- **Blade** – Templating engine  
+- **Bootstrap 5** – UI framework (manually integrated via CDN)  
+- **Mailtrap** – Email testing environment  
 
-Laravel Breeze – Lightweight authentication starter kit
+## ✨ Features
 
-Blade – Laravel's templating engine
+- Guests can submit support tickets with full details  
+- Customers receive a reference number to check ticket status  
+- Email notifications on ticket creation and replies  
+- Laravel Breeze login system for support agents  
+- Admin dashboard to view, filter, and respond to tickets  
+- Responsive UI with Bootstrap 5  
+- Pagination and clean table layout for ticket management  
 
-Bootstrap 5 – UI framework for table layout and pagination (added manually)
+## 📦 Setup Instructions
 
-Mailtrap – Email testing environment (for development mail delivery)
+1. Clone the repository  
+2. Run `composer install`  
+3. Run `npm install && npm run dev`  
+4. Configure your `.env` file with database and Mailtrap credentials  
+5. Run `php artisan migrate`  
+6. Seed the database with `php artisan db:seed`  
+7. Start development server: `php artisan serve`
 
-Features
+## 🔐 Test Credentials
 
-Guests can submit support tickets with details
+- Email: `test@example.com`  
+- Password: `12345678`
 
-Customers receive a reference number to check ticket status
+## 📝 Credits & References
 
-Email notifications on ticket submission and replies
-
-Support agents login via Laravel Breeze
-
-Agents can view, filter, and respond to tickets
-
-Responsive UI with Bootstrap 5 integration
-
-Pagination and table layout for ticket management
-
-
-Credits & References
-
-This project includes custom-written code and uses public Laravel & Bootstrap 5 documentation as reference. Bootstrap 5 CSS was added via CDN. No part of this codebase was directly copied from any external project or commercial source. If any reused snippets were included, they were adapted and clearly integrated.
-
-Setup Instructions
-
-Clone the repository
-
-Run composer install
-
-Run npm install && npm run dev
-
-Set up .env with your database and Mailtrap credentials
-
-Run php artisan migrate
-
-php artisan db:seed
-
-Start development server: php artisan serve
-
-
-
-Passwords
-
-test@example.com
-12345678
+This project was built with custom-written code and referenced official documentation from Laravel and Bootstrap. No external commercial codebases were used directly. Any reused snippets have been adapted and clearly integrated.
